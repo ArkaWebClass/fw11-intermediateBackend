@@ -8,7 +8,7 @@
 
 ## Installation
 
-- `npm i express body-parser cors morgan mysql2 module-alias helmet xss-clean compression dotenv`
+- `npm i express body-parser cors morgan mysql2 helmet xss-clean compression`
 - `npm i nodemon -D`
 - `npx eslint --init`
 - `npm i eslint prettier eslint-config-prettier eslint-plugin-prettier -D`
