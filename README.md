@@ -18,3 +18,15 @@
 - `Eslint` - Dirk Baeumer
 - `Path Intellisense` - Christian Kohler
 - `Prettier` - Prettier
+
+## Package
+
+- `express` - [[here](https://www.npmjs.com/package/express)]
+- `body-parser` - [[here](https://www.npmjs.com/package/body-parser)]
+- `cors` - [[here](https://www.npmjs.com/package/cors)]
+- `morgan` - [[here](https://www.npmjs.com/package/morgan)]
+- `mysql2` - [[here](https://www.npmjs.com/package/mysql2)]
+- `helmet` - [[here](https://www.npmjs.com/package/helmet)]
+- `xss-clean` - [[here](https://www.npmjs.com/package/xss-clean)]
+- `compression` - [[here](https://www.npmjs.com/package/compression)]
+- `nodemon` - [[here](https://www.npmjs.com/package/nodemon)]
