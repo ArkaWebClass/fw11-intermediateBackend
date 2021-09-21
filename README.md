@@ -3,7 +3,7 @@
 ## Collection Postman & Database
 
 - Collection Postman [[here](https://documenter.getpostman.com/view/9852901/UUxuhUhz)]
-- Database [[here]("./ticketing.sql)]
+- Database [[here](https://github.com/ArkaWebClass/fw11-beginerBackend/blob/main/ticketing.sql)]
 
 ## References
 
