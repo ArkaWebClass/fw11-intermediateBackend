@@ -4,7 +4,7 @@
   "description": "npm i express body-parser cors morgan mysql2 helmet xss-clean compression npm i nodemon -D",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",
