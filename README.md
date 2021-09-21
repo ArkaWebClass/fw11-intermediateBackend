@@ -1,5 +1,10 @@
 # Beginer Backend
 
+## Collection Postman & Database
+
+- Collection Postman [[here](https://documenter.getpostman.com/view/9852901/UUxuhUhz)]
+- Database [[here]("./ticketing.sql)]
+
 ## References
 
 - Add Eslint Pretitier & Air Bnb [[here](https://dev.to/saurabhggc/add-eslint-prettier-and-airbnb-to-your-project-3mo8)]
