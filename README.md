@@ -35,3 +35,16 @@
 - `xss-clean` [[here](https://www.npmjs.com/package/xss-clean)]
 - `compression` [[here](https://www.npmjs.com/package/compression)]
 - `nodemon` [[here](https://www.npmjs.com/package/nodemon)]
+
+## Modularisasi
+
+- Public = untuk menyimpan file upload / file yang nntinya bsa diakses secara public oleh user
+- Src = untuk menyimpan code dari project backend yang dibuat
+  |- Config = untuk menyimpan konfigurasi
+  |- Helpers = untuk menyimpan suatu fungsi yang bsa digunakan di file berbeda
+  |- Modules = untuk mengelompokkan suatu fitur di dalam request
+  ||- Routes = menyimpan path dari tiap request / method
+  ||- Controller = Logic / menyimpan data hasil request / mengeluarkan response
+  ||- Model = database
+  |- Routes = untuk menampung semua path route yang ada di dalam module / sebagai route navigation
+  |- index.js = file root untuk mengkonfigurasi beberapa library/framework untuk nantinya digunakan di dalam project

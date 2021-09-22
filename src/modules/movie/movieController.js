@@ -8,6 +8,10 @@ module.exports = {
       page = Number(page);
       limit = Number(limit);
       // TAMBAHKAN PROSES PEMBERIAN NILAI DEFAULT VALUE
+      // PAGE = 1
+      // LIMIT = 10
+      // SORT = "id ASC"
+      // SEARCH = ""
       const offset = page * limit - limit;
       const totalData = await movieModel.getCountMovie();
       const totalPage = Math.ceil(totalData / limit);
@@ -98,6 +102,15 @@ module.exports = {
         synopsis,
         updatedAt: new Date(Date.now()),
       };
+
+      for (const data in setData) {
+        // looping object yang ada di setData
+        if (!setData[data]) {
+          // untuk pengecekan apakah value didalam property ada isinya atau tidak
+          delete setData[data]; // delete property yang ada di dalam setData
+        }
+      }
+      // https://stackoverflow.com/questions/43807515/eslint-doesnt-allow-for-in
 
       const result = await movieModel.updateMovie(setData, id);
       return helperWrapper.response(res, 200, "Success update data", result);
