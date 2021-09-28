@@ -18,22 +18,21 @@ module.exports = {
           "Your token is destroyed please login again"
         );
       }
-    });
-
-    jwt.verify(token, "RAHASIA", (error, result) => {
-      if (error) {
-        return helperWrapper.response(res, 403, error.message);
-      }
-      req.decodeToken = result;
-      // result = {
-      //   id: 'fc3786be-7086-4348-b407-d79e008d0a45',
-      //   email: 'bagustri15@gmail.com',
-      //   createdAt: '2021-09-28T04:10:52.000Z',
-      //   updatedAt: null,
-      //   iat: 1632809494,
-      //   exp: 1632895894
-      // }
-      next();
+      jwt.verify(token, "RAHASIA", (error, result) => {
+        if (error) {
+          return helperWrapper.response(res, 403, error.message);
+        }
+        req.decodeToken = result;
+        // result = {
+        //   id: 'fc3786be-7086-4348-b407-d79e008d0a45',
+        //   email: 'bagustri15@gmail.com',
+        //   createdAt: '2021-09-28T04:10:52.000Z',
+        //   updatedAt: null,
+        //   iat: 1632809494,
+        //   exp: 1632895894
+        // }
+        next();
+      });
     });
   },
   isAdmin: (req, res, next) => {
