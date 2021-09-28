@@ -1,9 +1,11 @@
 const movieModel = require("./movieModel");
 const helperWrapper = require("../../helpers/wrapper");
+const redis = require("../../config/redis");
 
 module.exports = {
   getAllMovie: async (request, response) => {
     try {
+      // console.log(req.decodeToken);
       let { page, limit } = request.query;
       page = Number(page);
       limit = Number(limit);
@@ -23,6 +25,12 @@ module.exports = {
       };
 
       const result = await movieModel.getAllMovie(limit, offset);
+
+      redis.setex(
+        `getMovie:${JSON.stringify(request.query)}`,
+        3600,
+        JSON.stringify({ result, pageInfo })
+      );
 
       return helperWrapper.response(
         response,
@@ -52,6 +60,11 @@ module.exports = {
           null
         );
       }
+
+      // PROSES UNTUK MENYIMPAN DATA KE DALAM REDIS
+      // =====
+      redis.setex(`getMovie:${id}`, 3600, JSON.stringify(result));
+      // ======
       return helperWrapper.response(res, 200, "Success get data by id", result);
     } catch (error) {
       return helperWrapper.response(

@@ -2,6 +2,7 @@ const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 const helperWrapper = require("../../helpers/wrapper");
 const modelAuth = require("./authModel");
+const redis = require("../../config/redis");
 
 module.exports = {
   register: async (req, res) => {
@@ -50,6 +51,21 @@ module.exports = {
         id: payload.id,
         token,
       });
+    } catch (error) {
+      return helperWrapper.response(
+        res,
+        400,
+        `Bad request (${error.message})`,
+        null
+      );
+    }
+  },
+  logout: async (req, res) => {
+    try {
+      let token = req.headers.authorization;
+      token = token.split(" ")[1];
+      redis.setex(`accessToken:${token}`, 3600 * 24, token);
+      return helperWrapper.response(res, 200, "Success logout", null);
     } catch (error) {
       return helperWrapper.response(
         res,
