@@ -1,7 +1,7 @@
 {
-  "name": "beginerbackend",
+  "name": "intermediateBackend",
   "version": "1.0.0",
-  "description": "npm i express body-parser cors morgan mysql2 helmet xss-clean compression npm i nodemon -D",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon src/index.js"
