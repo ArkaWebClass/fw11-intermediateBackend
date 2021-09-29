@@ -46,7 +46,7 @@ module.exports = {
           redis.del(item);
         });
       }
-      next();
     });
+    next();
   },
 };

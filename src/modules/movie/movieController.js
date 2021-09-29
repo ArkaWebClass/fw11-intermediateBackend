@@ -1,6 +1,7 @@
 const movieModel = require("./movieModel");
 const helperWrapper = require("../../helpers/wrapper");
 const redis = require("../../config/redis");
+const deleteFile = require("../../helpers/uploads/deleteFile");
 
 module.exports = {
   getAllMovie: async (request, response) => {
@@ -77,12 +78,23 @@ module.exports = {
   },
   postMovie: async (req, res) => {
     try {
+      // req.file = {
+      //   fieldname: 'image',
+      //   originalname: 'Astronaut.jpeg',
+      //   encoding: '7bit',
+      //   mimetype: 'image/jpeg',
+      //   destination: 'public/uploads/movie',
+      //   filename: '2021-09-29T07-13-43.982ZAstronaut.jpeg',
+      //   path: 'public/uploads/movie/2021-09-29T07-13-43.982ZAstronaut.jpeg',
+      //   size: 16664
+      // }
       const { name, category, releaseDate, synopsis } = req.body;
       const setData = {
         name,
         category,
         releaseDate,
         synopsis,
+        image: req.file ? req.file.filename : null,
       };
       const result = await movieModel.postMovie(setData);
       return helperWrapper.response(res, 200, "Success create data", result);
@@ -116,13 +128,13 @@ module.exports = {
         updatedAt: new Date(Date.now()),
       };
 
-      for (const data in setData) {
-        // looping object yang ada di setData
-        if (!setData[data]) {
-          // untuk pengecekan apakah value didalam property ada isinya atau tidak
-          delete setData[data]; // delete property yang ada di dalam setData
-        }
-      }
+      // for (const data in setData) {
+      //   // looping object yang ada di setData
+      //   if (!setData[data]) {
+      //     // untuk pengecekan apakah value didalam property ada isinya atau tidak
+      //     delete setData[data]; // delete property yang ada di dalam setData
+      //   }
+      // }
       // https://stackoverflow.com/questions/43807515/eslint-doesnt-allow-for-in
 
       const result = await movieModel.updateMovie(setData, id);
@@ -139,6 +151,7 @@ module.exports = {
   deleteMovie: async (req, res) => {
     try {
       const { id } = req.params;
+
       const checkId = await movieModel.getMovieById(id);
       if (checkId.length < 1) {
         return helperWrapper.response(
@@ -148,6 +161,8 @@ module.exports = {
           null
         );
       }
+      // const result =  await deleteMovie...
+      deleteFile(`public/uploads/movie/${checkId[0].image}`);
       // PROSES DELETE
     } catch (error) {
       return helperWrapper.response(
