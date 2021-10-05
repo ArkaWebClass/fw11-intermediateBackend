@@ -127,6 +127,8 @@ module.exports = {
         synopsis,
         updatedAt: new Date(Date.now()),
       };
+      // PROSES CEK IMAGE
+      // MENJALANKAN HELPER DELETE IMAGE
 
       // for (const data in setData) {
       //   // looping object yang ada di setData

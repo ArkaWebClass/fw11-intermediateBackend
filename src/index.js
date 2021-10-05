@@ -5,10 +5,12 @@ const xss = require("xss-clean");
 const helmet = require("helmet");
 const compression = require("compression");
 const bodyParser = require("body-parser");
-const routerNavigation = require("./routes"); // ./routes/index.js
+const routerNavigation = require("./routes");
+// ./routes/index.js
+require.dotenv().config();
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // const whitelist = ["http://127.0.0.1:5500"];
 // const corsOptions = {

@@ -18,6 +18,10 @@ const upload = multer({ storage }).single("image");
 // array : untuk mengupload file tapi yang di upload lebih dari 1 file
 // fields : untuk mengupload file di lebih dari 1 field
 
+// 2 PROSES
+// 1. HANDLE LIMIT (limits)
+// 2. HANDLE FILE EXTENSION (fileFilter)
+
 const uploadFilter = (req, res, next) => {
   upload(req, res, (err) => {
     if (err instanceof multer.MulterError) {
