@@ -51,33 +51,35 @@ module.exports = {
         fraud_status: fraudStatus,
       } = result;
 
-      if (transactionStatus == "capture") {
+      if (transactionStatus === "capture") {
         // capture only applies to card transaction, which you need to check for the fraudStatus
-        if (fraudStatus == "challenge") {
+        if (fraudStatus === "challenge") {
           // TODO set transaction status on your databaase to 'challenge'
-        } else if (fraudStatus == "accept") {
+        } else if (fraudStatus === "accept") {
           // TODO set transaction status on your databaase to 'success'
           // [1]
           const setData = {
             statusBooking: "success",
           };
           console.log(bookingId);
+          console.log(setData);
           // MENJALANKAN MODEL UNTUK MENGUBAH STATUS BOOKING MENJADI SUKSES
         }
-      } else if (transactionStatus == "settlement") {
+      } else if (transactionStatus === "settlement") {
         // TODO set transaction status on your databaase to 'success'
         // [1]
         const setData = {
           statusBooking: "success",
         };
         console.log(bookingId);
+        console.log(setData);
         // MENJALANKAN MODEL UNTUK MENGUBAH STATUS BOOKING MENJADI SUKSES
-      } else if (transactionStatus == "deny") {
+      } else if (transactionStatus === "deny") {
         // TODO you can ignore 'deny', because most of the time it allows payment retries
         // and later can become success
       } else if (
-        transactionStatus == "cancel" ||
-        transactionStatus == "expire"
+        transactionStatus === "cancel" ||
+        transactionStatus === "expire"
       ) {
         // TODO set transaction status on your databaase to 'failure'
         // [1]
@@ -85,8 +87,9 @@ module.exports = {
           statusBooking: "failed",
         };
         console.log(bookingId);
+        console.log(setData);
         // MENJALANKAN MODEL UNTUK MENGUBAH STATUS BOOKING MENJADI GAGAL
-      } else if (transactionStatus == "pending") {
+      } else if (transactionStatus === "pending") {
         // TODO set transaction status on your databaase to 'pending' / waiting payment
       }
     } catch (error) {
