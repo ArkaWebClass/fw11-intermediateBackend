@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require("uuid");
 const ejs = require("ejs");
 const pdf = require("html-pdf");
 const path = require("path");
@@ -24,7 +25,7 @@ module.exports = {
       //   // await menjalankan model menginput data bookingSeat ke dalam table bookingSeat
       // });
       // [3] midtrans post
-      const id = 99999; // diambil dari hasil proses post booking yang diambil adalah id boking
+      const id = uuidv4(); // diambil dari hasil proses post booking yang diambil adalah id boking
       const amount = 30000; // total biaya yang harus dibayarkan
       const resultMidtrans = await midtrans.post(id, amount);
       // resultMidtrans = URL REDIRECT MIDTRANS
