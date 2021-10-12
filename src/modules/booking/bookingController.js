@@ -55,6 +55,11 @@ module.exports = {
         // capture only applies to card transaction, which you need to check for the fraudStatus
         if (fraudStatus === "challenge") {
           // TODO set transaction status on your databaase to 'challenge'
+          const setData = {
+            statusBooking: "failed",
+          };
+          console.log(bookingId);
+          console.log(setData);
         } else if (fraudStatus === "accept") {
           // TODO set transaction status on your databaase to 'success'
           // [1]
