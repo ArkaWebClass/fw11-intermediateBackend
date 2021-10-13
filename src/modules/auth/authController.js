@@ -17,6 +17,7 @@ module.exports = {
         id: uuidv4(),
         firstName,
         lastName,
+        image: "default.jpg",
         email,
         password,
       };
