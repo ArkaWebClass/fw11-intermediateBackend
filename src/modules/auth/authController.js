@@ -8,13 +8,15 @@ const sendMail = require("../../helpers/email");
 module.exports = {
   register: async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { firstName, lastName, email, password } = req.body;
 
       // PROSES PENGECEKAN EMAIL SUDAH PERNAH TERDAFTAR ATAU BLM DI DATABASE
       // PROSES ENCRYPT PASSWORD
 
       const setData = {
         id: uuidv4(),
+        firstName,
+        lastName,
         email,
         password,
       };
