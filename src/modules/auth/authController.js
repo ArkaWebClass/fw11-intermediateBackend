@@ -64,7 +64,7 @@ module.exports = {
       const payload = checkUser[0];
       delete payload.password;
       const token = jwt.sign({ ...payload }, "RAHASIA", {
-        expiresIn: "1h",
+        expiresIn: "20s",
       });
       // ADD REFRESH TOKEN
       const refreshToken = jwt.sign({ ...payload }, "RAHASIA", {
@@ -101,7 +101,7 @@ module.exports = {
   },
   refreshToken: async (req, res) => {
     try {
-      // console.log(req.body);
+      console.log(req.body);
       const { refreshToken } = req.body;
       // PROSES PENGECEKAN REFRESH TOKEN APAKAH BISA DIGUNAKAN ATAU TIDAK
       redis.get(`refreshToken:${refreshToken}`, (error, result) => {
