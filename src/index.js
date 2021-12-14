@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public")); // localhost:3001/uploads/movie/namagambar
 
-app.use("/", routerNavigation);
+app.use("/bagus", routerNavigation);
 
 app.use("/*", (request, response) => {
   response.status(404).send("Path not found !");
