@@ -2,6 +2,7 @@ const movieModel = require("./movieModel");
 const helperWrapper = require("../../helpers/wrapper");
 const redis = require("../../config/redis");
 const deleteFile = require("../../helpers/uploads/deleteFile");
+const admin = require("../../config/firebase");
 
 module.exports = {
   getAllMovie: async (request, response) => {
@@ -97,6 +98,15 @@ module.exports = {
         image: req.file ? req.file.filename : null,
       };
       const result = await movieModel.postMovie(setData);
+      admin.messaging().send({
+        // token:
+        //   "cjdlHpiqRsudhjkTlESRpU:APA91bFM535bqh-2NFzvaXLwvFK6RxsmUGMufYDet-OG-AeqqwYCV2tCz8gcCC36NmdfPgTjg1TJTt8hKKReDxX84QkVpIpfch6aB9jLq7zJpM6mEpD2t-ANe6ESPC2d6AIV20C5SQPd",
+        topic: "movie",
+        notification: {
+          title: "Film Baru",
+          body: name,
+        },
+      });
       return helperWrapper.response(res, 200, "Success create data", result);
     } catch (error) {
       return helperWrapper.response(

@@ -64,7 +64,7 @@ module.exports = {
       const payload = checkUser[0];
       delete payload.password;
       const token = jwt.sign({ ...payload }, "RAHASIA", {
-        expiresIn: "20s",
+        expiresIn: "1h",
       });
       // ADD REFRESH TOKEN
       const refreshToken = jwt.sign({ ...payload }, "RAHASIA", {
